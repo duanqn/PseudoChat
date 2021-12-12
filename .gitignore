@@ -6,6 +6,7 @@ packages/**
 .vs/**
 .vscode/**
 **/*.cache
+**/*.pfx
 obj
 PseudoChat/PseudoChat/Debug/**
 PseudoChat/PseudoChat/Release/**
