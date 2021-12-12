@@ -1,0 +1,9 @@
+namespace PseudoChat
+{
+    runtimeclass Contact
+    {
+        Contact();
+        Contact(String nickname);
+        String Nickname { get; };
+    }
+}

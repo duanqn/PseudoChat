@@ -1,0 +1,13 @@
+import "ContactManager.idl";
+
+namespace PseudoChat
+{
+    [default_interface]
+    runtimeclass MainWindow : Microsoft.UI.Xaml.Window
+    {
+        MainWindow();
+
+        Int32 MyProperty;
+        PseudoChat.ContactManager Manager { get; };
+    }
+}

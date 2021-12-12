@@ -1,0 +1,11 @@
+import "Contact.idl";
+
+namespace PseudoChat
+{
+    runtimeclass ContactManager
+    {
+        ContactManager();
+        Windows.Foundation.Collections.IVector<IInspectable> Contacts{ get; };
+    }
+}
+
