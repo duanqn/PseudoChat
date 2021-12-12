@@ -5,3 +5,13 @@ Release/**
 packages/**
 .vs/**
 .vscode/**
+**/*.cache
+obj
+PseudoChat/PseudoChat/Debug/**
+PseudoChat/PseudoChat/Release/**
+PseudoChat/PseudoChat/Generated Files/**
+PseudoChat/PseudoChat/x86/**
+PseudoChat/PseudoChat/x64/**
+PseudoChat/PseudoChat (Package)/AppPackages/**
+PseudoChat/PseudoChat (Package)/bin/**
+PseudoChat/PseudoChat (Package)/BundleArtifaces/**
