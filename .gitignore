@@ -1,0 +1,7 @@
+x86/**
+x64/**
+Debug/**
+Release/**
+packages/**
+.vs/**
+.vscode/**
