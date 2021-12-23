@@ -16,3 +16,7 @@ PseudoChat/PseudoChat/x64/**
 PseudoChat/PseudoChat (Package)/AppPackages/**
 PseudoChat/PseudoChat (Package)/bin/**
 PseudoChat/PseudoChat (Package)/BundleArtifacts/**
+PseudoChat/Common/x86/**
+PseudoChat/Common/x64/**
+PseudoChat/CommonTest/x86/**
+PseudoChat/CommonTest/x64/**
