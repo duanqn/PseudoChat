@@ -10,7 +10,6 @@
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Windows::Security::Cryptography::Core;
-using namespace Windows::UI::ViewManagement;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -25,8 +24,6 @@ namespace winrt::PseudoChat::implementation
         keyPair.Export(CryptographicPrivateKeyBlobType::BCryptPrivateKey);
 
         PrevMessageBox().IsReadOnly(true);
-        auto view = ApplicationView::GetForCurrentView();
-        view.SetPreferredMinSize({0, 0});
     }
 
     int32_t MainWindow::MyProperty()

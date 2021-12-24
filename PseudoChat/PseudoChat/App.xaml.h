@@ -17,6 +17,6 @@ namespace winrt::PseudoChat::implementation
         void OnSuspending(IInspectable const&, Windows::ApplicationModel::SuspendingEventArgs const&);
 
     private:
-        winrt::Microsoft::UI::Xaml::Window window{ nullptr };
+        winrt::Microsoft::UI::Xaml::Window m_window{ nullptr };
     };
 }

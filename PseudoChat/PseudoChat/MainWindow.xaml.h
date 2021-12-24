@@ -22,6 +22,7 @@ namespace winrt::PseudoChat::implementation
 
         PseudoChat::ContactManager Manager() const;
 
+        protected:
         winrt::PseudoChat::ContactManager m_manager;
     };
 }

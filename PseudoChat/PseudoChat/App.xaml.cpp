@@ -10,6 +10,7 @@ using namespace Microsoft::UI::Xaml::Controls;
 using namespace Microsoft::UI::Xaml::Navigation;
 using namespace PseudoChat;
 using namespace PseudoChat::implementation;
+using namespace Windows::UI::ViewManagement;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -41,6 +42,6 @@ App::App()
 /// <param name="e">Details about the launch request and process.</param>
 void App::OnLaunched(LaunchActivatedEventArgs const&)
 {
-    window = make<MainWindow>();
-    window.Activate();
+    m_window = make<MainWindow>();
+    m_window.Activate();
 }
