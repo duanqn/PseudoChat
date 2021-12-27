@@ -1,12 +1,12 @@
 ﻿#pragma once
 
-#include "Settings.g.h"
+#include "Navigation.g.h"
 
 namespace winrt::PseudoChat::implementation
 {
-    struct Settings : SettingsT<Settings>
+    struct Navigation : NavigationT<Navigation>
     {
-        Settings();
+        Navigation();
 
         void OnDisplayFrameNavigated(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
         void CtrlF_Invoked(Microsoft::UI::Xaml::Input::KeyboardAccelerator const& sender, Microsoft::UI::Xaml::Input::KeyboardAcceleratorInvokedEventArgs const& args);
@@ -19,7 +19,7 @@ namespace winrt::PseudoChat::implementation
 
 namespace winrt::PseudoChat::factory_implementation
 {
-    struct Settings : SettingsT<Settings, implementation::Settings>
+    struct Navigation : NavigationT<Navigation, implementation::Navigation>
     {
     };
 }

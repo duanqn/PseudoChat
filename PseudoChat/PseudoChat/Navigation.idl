@@ -1,0 +1,8 @@
+namespace PseudoChat
+{
+    [default_interface]
+    runtimeclass Navigation : Microsoft.UI.Xaml.Controls.Page
+    {
+        Navigation();
+    }
+}

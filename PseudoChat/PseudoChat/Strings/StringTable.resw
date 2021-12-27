@@ -121,6 +121,14 @@
     <value>Chat</value>
     <comment>Content for navigation item: Chat.</comment>
   </data>
+  <data name="NewMessageText" xml:space="preserve">
+    <value>New message</value>
+    <comment>Text displayed above the new message box.</comment>
+  </data>
+  <data name="PrevMessageText" xml:space="preserve">
+    <value>Messages</value>
+    <comment>Text displayed above the prev message box.</comment>
+  </data>
   <data name="SearchPlaceholder" xml:space="preserve">
     <value>Search</value>
     <comment>Placeholder text for search boxes.</comment>
@@ -128,5 +136,9 @@
   <data name="SelfSentMsgHeader" xml:space="preserve">
     <value>You:</value>
     <comment>Used when displaying a message sent by yourself.</comment>
+  </data>
+  <data name="SendButtonText" xml:space="preserve">
+    <value>Send</value>
+    <comment>Text displayed on send button.</comment>
   </data>
 </root>

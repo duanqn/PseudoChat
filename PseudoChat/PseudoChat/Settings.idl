@@ -1,8 +1,0 @@
-namespace PseudoChat
-{
-    [default_interface]
-    runtimeclass Settings : Microsoft.UI.Xaml.Controls.Page
-    {
-        Settings();
-    }
-}
