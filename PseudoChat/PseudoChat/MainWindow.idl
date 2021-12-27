@@ -6,5 +6,7 @@ namespace PseudoChat
     runtimeclass MainWindow : Microsoft.UI.Xaml.Window
     {
         MainWindow();
+
+        String WindowTitle { get; };
     }
 }

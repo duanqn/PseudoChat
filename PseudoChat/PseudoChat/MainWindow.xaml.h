@@ -16,6 +16,7 @@ namespace winrt::PseudoChat::implementation
         MainWindow();
 
         void MainFrame_Navigated(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
+        winrt::hstring WindowTitle();
     };
 }
 

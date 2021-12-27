@@ -21,7 +21,12 @@ namespace winrt::PseudoChat::implementation
         auto keyPair = provider.CreateKeyPair(2048);
         keyPair.Export(CryptographicPrivateKeyBlobType::BCryptPrivateKey);
 
-        MainFrame().Navigate(winrt::xaml_typename<Chat>());
+        MainFrame().Navigate(winrt::xaml_typename<Settings>());
+    }
+
+    winrt::hstring MainWindow::WindowTitle()
+    {
+        return Windows::ApplicationModel::Package::Current().DisplayName();
     }
 
     void MainWindow::MainFrame_Navigated(IInspectable const&, NavigationEventArgs const&)

@@ -1,0 +1,64 @@
+﻿<Page
+    x:Class="PseudoChat.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:local="using:PseudoChat"
+    HighContrastAdjustment="None">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <ResourceDictionary.ThemeDictionaries>
+                        <ResourceDictionary x:Key="Light">
+                            <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="LayerFillColorDefaultBrush"/>
+                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="Dark">
+                            <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="LayerFillColorDefaultBrush"/>
+                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="HighContrast">
+                            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="{ThemeResource SystemColorWindowColor}" />
+                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="{ThemeResource SystemColorWindowColor}" />
+                        </ResourceDictionary>
+                    </ResourceDictionary.ThemeDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <muxc:NavigationView
+            Canvas.ZIndex="0"
+            x:Name="NavigationViewControl"
+            Grid.Column="1"
+            IsTabStop="False"
+            IsPaneOpen="False"
+            IsTitleBarAutoPaddingEnabled="False">
+            <muxc:NavigationView.AutoSuggestBox>
+                <AutoSuggestBox
+                    x:Name="controlsSearchBox"
+                    VerticalAlignment="Center"
+                    x:FieldModifier="public"
+                    PlaceholderText="Search"
+                    QueryIcon="Find"
+                    MinWidth="200"
+                    KeyboardAcceleratorPlacementMode="Hidden">
+                    <AutoSuggestBox.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="F" Invoked="CtrlF_Invoked" />
+                    </AutoSuggestBox.KeyboardAccelerators>
+                </AutoSuggestBox>
+            </muxc:NavigationView.AutoSuggestBox>
+
+            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated"/>
+        </muxc:NavigationView>
+    </Grid>
+</Page>

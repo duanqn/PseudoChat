@@ -14,18 +14,16 @@
 #include <string>
 
 namespace winrt::PseudoChat::implementation {
-	class ContactManager : public ContactManagerT<ContactManager> {
-	private:
-		std::vector<Windows::Foundation::IInspectable> m_contacts;
-	public:
-		ContactManager();
-		~ContactManager() {}
+    class ContactManager : public ContactManagerT<ContactManager> {
+    public:
+        ContactManager();
+        ~ContactManager() {}
 
-		Windows::Foundation::Collections::IVector<Windows::Foundation::IInspectable> Contacts();
-	};
+        Windows::Foundation::Collections::IVector<Windows::Foundation::IInspectable> Contacts();
+    };
 }
 
 namespace winrt::PseudoChat::factory_implementation {
-	struct ContactManager : ContactManagerT<ContactManager, implementation::ContactManager> {};
+    struct ContactManager : ContactManagerT<ContactManager, implementation::ContactManager> {};
 }
 
