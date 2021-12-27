@@ -42,13 +42,14 @@
             Grid.Column="1"
             IsTabStop="False"
             IsPaneOpen="False"
-            IsTitleBarAutoPaddingEnabled="False">
+            IsTitleBarAutoPaddingEnabled="False"
+            ItemInvoked="NavigationViewControl_ItemInvoked">
             <muxc:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
                     VerticalAlignment="Center"
                     x:FieldModifier="public"
-                    PlaceholderText="Search"
+                    PlaceholderText=""
                     QueryIcon="Find"
                     MinWidth="200"
                     KeyboardAcceleratorPlacementMode="Hidden">
@@ -58,7 +59,15 @@
                 </AutoSuggestBox>
             </muxc:NavigationView.AutoSuggestBox>
 
-            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated"/>
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem
+                    x:Name="navChat"
+                    Content="Placeholder"
+                    Icon="Message"/>
+            </muxc:NavigationView.MenuItems>
+
+
+            <Frame x:Name="DisplayFrame" Navigated="OnDisplayFrameNavigated"/>
         </muxc:NavigationView>
     </Grid>
 </Page>
