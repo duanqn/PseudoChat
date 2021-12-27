@@ -15,15 +15,7 @@ namespace winrt::PseudoChat::implementation
     {
         MainWindow();
 
-        int32_t MyProperty();
-        void MyProperty(int32_t value);
-
-        void Send_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e);
-
-        PseudoChat::ContactManager Manager() const;
-
-        protected:
-        winrt::PseudoChat::ContactManager m_manager;
+        void MainFrame_Navigated(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
     };
 }
 

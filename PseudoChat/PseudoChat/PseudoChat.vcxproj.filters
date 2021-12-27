@@ -5,6 +5,7 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml" />
+    <Page Include="Chat.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -24,7 +25,6 @@
     <ClInclude Include="Contact.h" />
     <ClInclude Include="ContactManager.h" />
     <ClInclude Include="Utils.h" />
-    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
@@ -42,6 +42,11 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="PseudoChat.rc" />
+    <PRIResource Include="Strings\language-zh-Hans\StringTable.resw">
+      <Filter>Assets</Filter>
+    </PRIResource>
+    <PRIResource Include="Strings\StringTable.resw">
+      <Filter>Assets</Filter>
+    </PRIResource>
   </ItemGroup>
 </Project>
