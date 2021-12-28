@@ -16,7 +16,7 @@ using namespace Microsoft::UI::Xaml::Navigation;
 
 namespace winrt::PseudoChat::implementation
 {
-    MainWindow::MainWindow()
+    MainWindow::MainWindow(): m_settings(::PseudoChat::Singleton<::PseudoChat::Settings>::getInstance())
     {
         InitializeComponent();
         auto provider = AsymmetricKeyAlgorithmProvider::OpenAlgorithm(AsymmetricAlgorithmNames::RsaSignPkcs1Sha256());

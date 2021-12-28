@@ -2,6 +2,9 @@
 
 #include "Chat.g.h"
 
+#include "Settings.h"
+#include "Singleton.hpp"
+
 namespace winrt::PseudoChat::implementation
 {
     struct Chat : ChatT<Chat>
@@ -13,9 +16,10 @@ namespace winrt::PseudoChat::implementation
         PseudoChat::ContactManager Manager() const;
         void ChatPage_Loaded(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e);
 
-        protected:
+        private:
         winrt::PseudoChat::ContactManager m_manager;
         winrt::Microsoft::Windows::ApplicationModel::Resources::ResourceManager m_resourceManager;
+        ::PseudoChat::Singleton<::PseudoChat::Settings>* m_settings;
 
         void localizePage();
     };

@@ -16,21 +16,17 @@ using namespace winrt::Microsoft::UI::Xaml::Controls;
 
 namespace winrt::PseudoChat::implementation
 {
-    Navigation::Navigation(): m_resourceManager() {
+    Navigation::Navigation(): m_resourceManager(), m_settings(::PseudoChat::Singleton<::PseudoChat::Settings>::getInstance()) {
         InitializeComponent();
 
-        auto&& searchBox = controlsSearchBox();
+        ::PseudoChat::Settings& globalSettings = m_settings->data();
+        globalSettings.language.registerObserver([this](const std::string&, ::PseudoChat::Settings::Language, ::PseudoChat::Settings::Language) {
+            if (this->IsLoaded()) {
+                localizePage();
+            }
+        });
 
-        auto&& context = m_resourceManager.CreateResourceContext();
-        // context.QualifierValues().Insert(L"Language", L"zh-Hans")
-        auto&& resourceMap = m_resourceManager.MainResourceMap();
-        auto&& resource = resourceMap.GetValue(L"StringTable/SearchPlaceholder", context);
-        
-        searchBox.PlaceholderText(resource.ValueAsString());
-
-        auto&& navChatItem = navChat();
-        resource = resourceMap.GetValue(L"StringTable/navChatText", context);
-        navChatItem.Content(winrt::box_value(resource.ValueAsString()));
+        // globalSettings.language.set(::PseudoChat::Settings::Language::Default);
     }
 
     void Navigation::OnDisplayFrameNavigated(winrt::Windows::Foundation::IInspectable const&, winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const&)
@@ -38,6 +34,20 @@ namespace winrt::PseudoChat::implementation
     }
     void Navigation::CtrlF_Invoked(Microsoft::UI::Xaml::Input::KeyboardAccelerator const&, Microsoft::UI::Xaml::Input::KeyboardAcceleratorInvokedEventArgs const&)
     {
+    }
+
+    void Navigation::localizePage() {
+        auto&& context = m_resourceManager.CreateResourceContext();
+        // context.QualifierValues().Insert(L"Language", L"zh-Hans")
+        auto&& resourceMap = m_resourceManager.MainResourceMap();
+        auto&& resource = resourceMap.GetValue(L"StringTable/SearchPlaceholder", context);
+        
+        auto&& searchBox = controlsSearchBox();
+        searchBox.PlaceholderText(resource.ValueAsString());
+
+        auto&& navChatItem = navChat();
+        resource = resourceMap.GetValue(L"StringTable/navChatText", context);
+        navChatItem.Content(winrt::box_value(resource.ValueAsString()));
     }
 
     void Navigation::NavigationViewControl_ItemInvoked(NavigationView const& sender, NavigationViewItemInvokedEventArgs const& args)
@@ -71,5 +81,10 @@ namespace winrt::PseudoChat::implementation
         if (invokedViewItem == navChat()) {
             frame.Navigate(winrt::xaml_typename<winrt::PseudoChat::Chat>());
         }
+    }
+
+    void Navigation::Navigation_Loaded(IInspectable const&, RoutedEventArgs const&)
+    {
+        localizePage();
     }
 }

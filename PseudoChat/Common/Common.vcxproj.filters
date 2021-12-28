@@ -26,5 +26,14 @@
     <ClInclude Include="Message.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Concepts.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Observable.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

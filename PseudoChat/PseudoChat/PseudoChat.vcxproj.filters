@@ -21,12 +21,14 @@
     <ClCompile Include="Contact.cpp" />
     <ClCompile Include="ContactManager.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Settings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Contact.h" />
     <ClInclude Include="ContactManager.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Settings.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">

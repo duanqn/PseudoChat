@@ -8,8 +8,8 @@ using namespace Windows::Foundation;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
 using namespace Microsoft::UI::Xaml::Navigation;
-using namespace PseudoChat;
-using namespace PseudoChat::implementation;
+using namespace winrt::PseudoChat;
+using namespace winrt::PseudoChat::implementation;
 using namespace Windows::UI::ViewManagement;
 
 // To learn more about WinUI, the WinUI project structure,

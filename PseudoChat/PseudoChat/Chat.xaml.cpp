@@ -14,7 +14,7 @@ using namespace Microsoft::UI::Xaml;
 
 namespace winrt::PseudoChat::implementation
 {
-    Chat::Chat(): m_manager(), m_resourceManager()
+    Chat::Chat(): m_manager(), m_resourceManager(), m_settings(::PseudoChat::Singleton<::PseudoChat::Settings>::getInstance())
     {
         InitializeComponent();
     }

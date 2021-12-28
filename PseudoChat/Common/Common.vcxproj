@@ -158,8 +158,11 @@
     <ClCompile Include="Exception.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Concepts.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="Message.hpp" />
+    <ClInclude Include="Observable.hpp" />
+    <ClInclude Include="Singleton.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

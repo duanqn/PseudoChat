@@ -8,6 +8,8 @@
 #pragma pop_macro("GetCurrentTime")
 
 #include "ContactManager.h"
+#include "Settings.h"
+#include "Singleton.hpp"
 
 namespace winrt::PseudoChat::implementation
 {
@@ -17,6 +19,9 @@ namespace winrt::PseudoChat::implementation
 
         void MainFrame_Navigated(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
         winrt::hstring WindowTitle();
+
+        private:
+        ::PseudoChat::Singleton<::PseudoChat::Settings>* m_settings;
     };
 }
 

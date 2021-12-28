@@ -151,6 +151,7 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Settings.h" />
     <ClInclude Include="Settings.xaml.h">
       <DependentUpon>Settings.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -188,6 +189,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Settings.xaml.cpp">
       <DependentUpon>Settings.xaml</DependentUpon>
       <SubType>Code</SubType>
