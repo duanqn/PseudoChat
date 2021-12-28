@@ -151,6 +151,10 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Settings.xaml.h">
+      <DependentUpon>Settings.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="Chat.xaml.h">
       <DependentUpon>Chat.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -172,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
+    <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Chat.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -181,6 +188,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Settings.xaml.cpp">
+      <DependentUpon>Settings.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="Chat.xaml.cpp">
       <DependentUpon>Chat.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -207,6 +218,10 @@
     <Midl Include="App.idl">
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
+    </Midl>
+    <Midl Include="Settings.idl">
+      <DependentUpon>Settings.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Midl>
     <Midl Include="Chat.idl">
       <DependentUpon>Chat.xaml</DependentUpon>

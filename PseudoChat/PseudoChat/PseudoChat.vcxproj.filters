@@ -7,6 +7,7 @@
     <Page Include="MainWindow.xaml" />
     <Page Include="Chat.xaml" />
     <Page Include="Navigation.xaml" />
+    <Page Include="Settings.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

@@ -4,6 +4,8 @@
 #include "MainWindow.g.cpp"
 #endif
 
+#include "Navigation.xaml.h"
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Windows::Security::Cryptography::Core;
@@ -21,7 +23,7 @@ namespace winrt::PseudoChat::implementation
         auto keyPair = provider.CreateKeyPair(2048);
         keyPair.Export(CryptographicPrivateKeyBlobType::BCryptPrivateKey);
 
-        MainFrame().Navigate(winrt::xaml_typename<Navigation>());
+        MainFrame().Navigate(winrt::xaml_typename<winrt::PseudoChat::Navigation>());
     }
 
     winrt::hstring MainWindow::WindowTitle()

@@ -4,6 +4,9 @@
 #include "Navigation.g.cpp"
 #endif
 
+#include "Chat.xaml.h"
+#include "Settings.xaml.h"
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace winrt::Microsoft::UI::Xaml::Controls;
@@ -13,8 +16,7 @@ using namespace winrt::Microsoft::UI::Xaml::Controls;
 
 namespace winrt::PseudoChat::implementation
 {
-    Navigation::Navigation(): m_resourceManager()
-    {
+    Navigation::Navigation(): m_resourceManager() {
         InitializeComponent();
 
         auto&& searchBox = controlsSearchBox();
@@ -47,8 +49,10 @@ namespace winrt::PseudoChat::implementation
             return;
         }
 
+        auto&& frame = DisplayFrame();
+
         if (args.IsSettingsInvoked()) {
-            // TODO: Navigate to settings page.
+            frame.Navigate(winrt::xaml_typename<winrt::PseudoChat::Settings>());
             return;
         }
 
@@ -61,11 +65,11 @@ namespace winrt::PseudoChat::implementation
 
         // Assertion OK; Unbox it as a winrt::hstring
         auto invokedString = winrt::unbox_value<winrt::hstring>(invokedItem);
-        
+
         winrt::Microsoft::UI::Xaml::Controls::NavigationViewItem invokedViewItem = args.InvokedItemContainer().as<winrt::Microsoft::UI::Xaml::Controls::NavigationViewItem>();
-        auto&& frame = DisplayFrame();
+
         if (invokedViewItem == navChat()) {
-            frame.Navigate(winrt::xaml_typename<Chat>());
+            frame.Navigate(winrt::xaml_typename<winrt::PseudoChat::Chat>());
         }
     }
 }
