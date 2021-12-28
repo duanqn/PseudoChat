@@ -17,18 +17,6 @@ namespace winrt::PseudoChat::implementation
     Chat::Chat(): m_manager(), m_resourceManager()
     {
         InitializeComponent();
-
-        auto&& context = m_resourceManager.CreateResourceContext();
-        auto&& resourceMap = m_resourceManager.MainResourceMap();
-
-        auto&& button = SendButton();
-        button.Content(winrt::box_value(resourceMap.GetValue(L"StringTable/SendButtonText", context).ValueAsString()));
-
-        auto&& prevMsgBox = PrevMessageBox();
-        prevMsgBox.Header(winrt::box_value(resourceMap.GetValue(L"StringTable/PrevMessageText", context).ValueAsString()));
-
-        auto&& newMsgBox = NewMessageBox();
-        newMsgBox.Header(winrt::box_value(resourceMap.GetValue(L"StringTable/NewMessageText", context).ValueAsString()));
     }
 
     void Chat::Send_Click(winrt::Windows::Foundation::IInspectable const&, winrt::Microsoft::UI::Xaml::RoutedEventArgs const&) {
@@ -45,5 +33,24 @@ namespace winrt::PseudoChat::implementation
 
     PseudoChat::ContactManager Chat::Manager() const {
         return m_manager;
+    }
+
+    void Chat::localizePage() {
+        auto&& context = m_resourceManager.CreateResourceContext();
+        auto&& resourceMap = m_resourceManager.MainResourceMap();
+
+        auto&& button = SendButton();
+        button.Content(winrt::box_value(resourceMap.GetValue(L"StringTable/SendButtonText", context).ValueAsString()));
+
+        auto&& prevMsgBox = PrevMessageBox();
+        prevMsgBox.Header(winrt::box_value(resourceMap.GetValue(L"StringTable/PrevMessageText", context).ValueAsString()));
+
+        auto&& newMsgBox = NewMessageBox();
+        newMsgBox.Header(winrt::box_value(resourceMap.GetValue(L"StringTable/NewMessageText", context).ValueAsString()));
+    }
+
+    void Chat::ChatPage_Loaded(IInspectable const&, RoutedEventArgs const&)
+    {
+        localizePage();
     }
 }

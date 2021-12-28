@@ -5,9 +5,31 @@
     xmlns:local="using:PseudoChat"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
     <ScrollViewer>
-        
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel Height="Auto" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <TextBlock Text="Mode" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <RadioButton Name="ModeNormal" GroupName="ModeGroup" Content="Normal Mode" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <RadioButton Name="ModeQingLang" GroupName="ModeGroup" Content="QingLang Mode" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel Height="Auto" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <TextBlock Text="Language" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <muxc:DropDownButton AutomationProperties.Name="Email">
+                    <muxc:DropDownButton.Content>
+                        Select...
+                    </muxc:DropDownButton.Content>
+                    <muxc:DropDownButton.Flyout>
+                        <MenuFlyout Placement="Bottom">
+                            <MenuFlyoutItem Text="Default"/>
+                            <MenuFlyoutItem Text="Chinese"/>
+                            <MenuFlyoutItem Text="English"/>
+                        </MenuFlyout>
+                    </muxc:DropDownButton.Flyout>
+                </muxc:DropDownButton>
+            </StackPanel>
+        </StackPanel>
     </ScrollViewer>
 </Page>
