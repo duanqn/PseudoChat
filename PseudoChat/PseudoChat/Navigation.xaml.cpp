@@ -20,13 +20,11 @@ namespace winrt::PseudoChat::implementation
         InitializeComponent();
 
         ::PseudoChat::Settings& globalSettings = m_settings->data();
-        globalSettings.language.registerObserver([this](const std::string&, ::PseudoChat::Settings::Language, ::PseudoChat::Settings::Language) {
+        globalSettings.language.registerObserver([this](const std::string&, ::PseudoChat::Settings::Language, ::PseudoChat::Settings::Language current) {
             if (this->IsLoaded()) {
-                localizePage();
+                localizePage(current);
             }
         });
-
-        // globalSettings.language.set(::PseudoChat::Settings::Language::Default);
     }
 
     void Navigation::OnDisplayFrameNavigated(winrt::Windows::Foundation::IInspectable const&, winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const&)
@@ -36,9 +34,13 @@ namespace winrt::PseudoChat::implementation
     {
     }
 
-    void Navigation::localizePage() {
-        auto&& context = m_resourceManager.CreateResourceContext();
-        // context.QualifierValues().Insert(L"Language", L"zh-Hans")
+    void Navigation::localizePage(::PseudoChat::Settings::Language language) {
+        auto context = m_resourceManager.CreateResourceContext();
+        winrt::hstring localeString = winrt::hstring(::PseudoChat::g_localeStrings[static_cast<int>(language)]);
+        if (language != ::PseudoChat::Settings::Language::Default) {
+            context.QualifierValues().Insert(L"Language", localeString);
+        }
+
         auto&& resourceMap = m_resourceManager.MainResourceMap();
         auto&& resource = resourceMap.GetValue(L"StringTable/SearchPlaceholder", context);
         
@@ -48,6 +50,10 @@ namespace winrt::PseudoChat::implementation
         auto&& navChatItem = navChat();
         resource = resourceMap.GetValue(L"StringTable/navChatText", context);
         navChatItem.Content(winrt::box_value(resource.ValueAsString()));
+
+        auto&& settingsItem = NavigationViewControl().SettingsItem();
+        resource = resourceMap.GetValue(L"StringTable/navSettingsText", context);
+        settingsItem.as<Controls::ContentControl>().Content(winrt::box_value(resource.ValueAsString()));
     }
 
     void Navigation::NavigationViewControl_ItemInvoked(NavigationView const& sender, NavigationViewItemInvokedEventArgs const& args)
@@ -85,6 +91,6 @@ namespace winrt::PseudoChat::implementation
 
     void Navigation::Navigation_Loaded(IInspectable const&, RoutedEventArgs const&)
     {
-        localizePage();
+        localizePage(m_settings->data().language.get());
     }
 }

@@ -117,9 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LanguageChinese" xml:space="preserve">
+    <value>简体中文</value>
+    <comment>Language: Chinese</comment>
+  </data>
+  <data name="LanguageDefault" xml:space="preserve">
+    <value>Default</value>
+    <comment>Language: default</comment>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>English</value>
+    <comment>Language: English</comment>
+  </data>
+  <data name="ModeNormal" xml:space="preserve">
+    <value>Normal</value>
+    <comment>Mode: Normal</comment>
+  </data>
+  <data name="ModeQingLang" xml:space="preserve">
+    <value>Qing Lang</value>
+    <comment>Mode: Qing Lang</comment>
+  </data>
   <data name="navChatText" xml:space="preserve">
     <value>Chat</value>
     <comment>Content for navigation item: Chat.</comment>
+  </data>
+  <data name="navSettingsText" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Content for navigation item: Settings.</comment>
   </data>
   <data name="NewMessageText" xml:space="preserve">
     <value>New message</value>
@@ -140,5 +164,13 @@
   <data name="SendButtonText" xml:space="preserve">
     <value>Send</value>
     <comment>Text displayed on send button.</comment>
+  </data>
+  <data name="SettingsLanguageText" xml:space="preserve">
+    <value>Language</value>
+    <comment>Text displayed for language setting entry.</comment>
+  </data>
+  <data name="SettingsModeText" xml:space="preserve">
+    <value>Mode</value>
+    <comment>Text displayed for mode setting entry.</comment>
   </data>
 </root>

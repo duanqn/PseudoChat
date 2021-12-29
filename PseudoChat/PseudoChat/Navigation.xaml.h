@@ -19,7 +19,7 @@ namespace winrt::PseudoChat::implementation
         winrt::Microsoft::Windows::ApplicationModel::Resources::ResourceManager m_resourceManager;
         ::PseudoChat::Singleton<::PseudoChat::Settings>* m_settings;
 
-        void localizePage();
+        void localizePage(::PseudoChat::Settings::Language language);
     };
 }
 

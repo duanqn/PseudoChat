@@ -23,7 +23,7 @@ namespace PseudoChat {
         T m_data;
         std::unordered_map<Token, std::unique_ptr<Callback>> m_observers;
         Token m_nextToken;
-        std::mutex m_mutex;
+        mutable std::mutex m_mutex;
 
     public:
         template<typename U> requires std::is_constructible_v<T, U&&>

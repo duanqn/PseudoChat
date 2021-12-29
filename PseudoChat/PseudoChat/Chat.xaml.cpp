@@ -35,8 +35,12 @@ namespace winrt::PseudoChat::implementation
         return m_manager;
     }
 
-    void Chat::localizePage() {
+    void Chat::localizePage(::PseudoChat::Settings::Language language) {
         auto&& context = m_resourceManager.CreateResourceContext();
+        if (language != ::PseudoChat::Settings::Language::Default) {
+            const std::wstring_view& localeString = ::PseudoChat::g_localeStrings[static_cast<int>(language)];
+            context.QualifierValues().Insert(L"Language", winrt::hstring(localeString));
+        }
         auto&& resourceMap = m_resourceManager.MainResourceMap();
 
         auto&& button = SendButton();
@@ -51,6 +55,6 @@ namespace winrt::PseudoChat::implementation
 
     void Chat::ChatPage_Loaded(IInspectable const&, RoutedEventArgs const&)
     {
-        localizePage();
+        localizePage(m_settings->data().language.get());
     }
 }
