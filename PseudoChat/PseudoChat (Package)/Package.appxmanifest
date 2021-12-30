@@ -9,7 +9,7 @@
   <Identity
     Name="0d317128-ae94-42e5-8486-e93786a1c888"
     Publisher="CN=Qingnan Duan"
-    Version="0.0.6.0" />
+    Version="0.0.7.0" />
 
   <Properties>
     <DisplayName>PseudoChat (Package)</DisplayName>

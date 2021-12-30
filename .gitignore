@@ -7,6 +7,7 @@ packages/**
 .vscode/**
 **/*.cache
 **/*.pfx
+**/*.user
 obj
 PseudoChat/PseudoChat/Debug/**
 PseudoChat/PseudoChat/Release/**
@@ -18,5 +19,7 @@ PseudoChat/PseudoChat (Package)/bin/**
 PseudoChat/PseudoChat (Package)/BundleArtifacts/**
 PseudoChat/Common/x86/**
 PseudoChat/Common/x64/**
+PseudoChat/Common/Debug/**
+PseudoChat/Common/Release/**
 PseudoChat/CommonTest/x86/**
 PseudoChat/CommonTest/x64/**
