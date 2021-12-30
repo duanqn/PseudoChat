@@ -7,7 +7,6 @@
 #include "Settings.h"
 
 #include <cstdint>
-#include <map>
 
 namespace winrt::PseudoChat::implementation
 {
