@@ -7,22 +7,32 @@
 using namespace winrt;
 using namespace winrt::Windows::Foundation;
 using namespace winrt::Microsoft::UI::Xaml;
+using Language = ::PseudoChat::Settings::Language;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace winrt::PseudoChat::implementation
 {
-    Settings::Settings(): m_resourceManager(), m_settings(::PseudoChat::Singleton<::PseudoChat::Settings>::getInstance()), m_selectedLanguageItem(0)
+    Settings::Settings(): m_resourceManager(), m_settings(::PseudoChat::Singleton<::PseudoChat::Settings>::getInstance()), m_selectedLanguage(m_settings->data().language.get()), m_observerToken(0), m_LanguageToUIPosition()
     {
         InitializeComponent();
 
         ::PseudoChat::Settings& globalSettings = m_settings->data();
-        globalSettings.language.registerObserver([this](const std::string&, ::PseudoChat::Settings::Language, ::PseudoChat::Settings::Language current) {
+        m_observerToken = globalSettings.language.registerObserver([this](const std::string&, ::PseudoChat::Settings::Language, ::PseudoChat::Settings::Language current) {
             if (this->IsLoaded()) {
                 localizePage(current);
             }
         });
+
+        m_LanguageToUIPosition.insert(std::make_pair(Language::Default, 0));
+        m_LanguageToUIPosition.insert(std::make_pair(Language::Chinese_CHS, 1));
+        m_LanguageToUIPosition.insert(std::make_pair(Language::English_EN, 2));
+    }
+
+    Settings::~Settings() {
+        ::PseudoChat::Settings& globalSettings = m_settings->data();
+        globalSettings.language.unregisterObserver(m_observerToken);
     }
 
     void Settings::LanguageDropdown_Click(IInspectable const& sender, RoutedEventArgs const& e) {
@@ -32,25 +42,12 @@ namespace winrt::PseudoChat::implementation
 
         for (uint32_t i = 0; i < dropdownList.Size(); ++i) {
             if (itemClicked == dropdownList.GetAt(i).as<Controls::MenuFlyoutItem>()) {
-                m_selectedLanguageItem = i;
+                m_selectedLanguage = m_LanguageToUIPosition.at(i);
             }
         }
 
         ::PseudoChat::Settings& globalSettings = m_settings->data();
-        switch (m_selectedLanguageItem)
-        {
-        case 0:
-            globalSettings.language.set(::PseudoChat::Settings::Language::Default);
-            break;
-        case 1:
-            globalSettings.language.set(::PseudoChat::Settings::Language::Chinese_CHS);
-            break;
-        case 2:
-            globalSettings.language.set(::PseudoChat::Settings::Language::English_EN);
-            break;
-        default:
-            WINRT_ASSERT(false);
-        }
+        globalSettings.language.set(m_selectedLanguage);
     }
 
     void Settings::localizePage(::PseudoChat::Settings::Language language) {
@@ -86,7 +83,7 @@ namespace winrt::PseudoChat::implementation
 
     void Settings::updateDropdownSelection() {
         auto&& vec = LanguageDropdown().Flyout().as<Controls::MenuFlyout>().Items();
-        LanguageDropdown().Content(winrt::box_value(vec.GetAt(m_selectedLanguageItem).as<Controls::MenuFlyoutItem>().Text()));
+        LanguageDropdown().Content(winrt::box_value(vec.GetAt(m_LanguageToUIPosition[m_selectedLanguage]).as<Controls::MenuFlyoutItem>().Text()));
     }
 
     void Settings::SettingsPage_Loaded(IInspectable const&, RoutedEventArgs const&)
