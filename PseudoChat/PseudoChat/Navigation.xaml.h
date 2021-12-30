@@ -9,6 +9,7 @@ namespace winrt::PseudoChat::implementation
     struct Navigation : NavigationT<Navigation>
     {
         Navigation();
+        ~Navigation();
 
         void OnDisplayFrameNavigated(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
         void CtrlF_Invoked(Microsoft::UI::Xaml::Input::KeyboardAccelerator const& sender, Microsoft::UI::Xaml::Input::KeyboardAcceleratorInvokedEventArgs const& args);
@@ -18,6 +19,7 @@ namespace winrt::PseudoChat::implementation
         private:
         winrt::Microsoft::Windows::ApplicationModel::Resources::ResourceManager m_resourceManager;
         ::PseudoChat::Singleton<::PseudoChat::Settings>* m_settings;
+        uint32_t m_observerToken;
 
         void localizePage(::PseudoChat::Settings::Language language);
     };

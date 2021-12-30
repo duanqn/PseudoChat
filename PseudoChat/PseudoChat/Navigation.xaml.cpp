@@ -16,15 +16,20 @@ using namespace winrt::Microsoft::UI::Xaml::Controls;
 
 namespace winrt::PseudoChat::implementation
 {
-    Navigation::Navigation(): m_resourceManager(), m_settings(::PseudoChat::Singleton<::PseudoChat::Settings>::getInstance()) {
+    Navigation::Navigation(): m_resourceManager(), m_settings(::PseudoChat::Singleton<::PseudoChat::Settings>::getInstance()), m_observerToken(0) {
         InitializeComponent();
 
         ::PseudoChat::Settings& globalSettings = m_settings->data();
-        globalSettings.language.registerObserver([this](const std::string&, ::PseudoChat::Settings::Language, ::PseudoChat::Settings::Language current) {
+        m_observerToken = globalSettings.language.registerObserver([this](const std::string&, ::PseudoChat::Settings::Language, ::PseudoChat::Settings::Language current) {
             if (this->IsLoaded()) {
                 localizePage(current);
             }
         });
+    }
+
+    Navigation::~Navigation() {
+        ::PseudoChat::Settings& globalSettings = m_settings->data();
+        globalSettings.language.unregisterObserver(m_observerToken);
     }
 
     void Navigation::OnDisplayFrameNavigated(winrt::Windows::Foundation::IInspectable const&, winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const&)
